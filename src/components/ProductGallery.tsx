@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
 import { Row, Col, Spinner, Modal, Container, Alert, Button } from 'react-bootstrap';
 import ProductItem from './ProductItem';
-import ProductDetails from './ProductDetails';
 import useFetchProducts from '../hooks/useFetchProducts';
 import { useToast } from '../context/ToastContext';
 import { useLazyLoad } from '../hooks/useLazyLoad';
 import Header from './Header';
+
+// Lazy load the ProductDetails component
+const ProductDetails = React.lazy(() => import('./ProductDetails'));
 
 interface Product {
     id: number;
@@ -125,9 +127,11 @@ const ProductGallery: React.FC = () => {
                 <div ref={loadMoreRef} style={{ height: '20px' }} />
 
                 {selectedProduct && (
-                    <Modal show={showModal} onHide={handleCloseModal}>
-                        <ProductDetails product={selectedProduct} onClose={handleCloseModal} />
-                    </Modal>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Modal show={showModal} onHide={handleCloseModal}>
+                            <ProductDetails product={selectedProduct} onClose={handleCloseModal} />
+                        </Modal>
+                    </Suspense>
                 )}
 
                 {showBackToTop && (
