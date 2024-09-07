@@ -1,0 +1,170 @@
+:root {
+  // Global Variables
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --background-color: #f7f7f7;
+  --text-color: #ffffff;
+  --loader-button-bg: #000;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+// Main Container
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  width: 100vw;
+}
+
+// Header Component
+.header {
+  background-color: var(--background-color);
+  padding: 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  width: 100%;
+}
+
+// Gallery Content
+.gallery-content {
+  padding: 20px;
+}
+
+// Gallery Container for Scrollbar Padding
+.gallery-container {
+  padding-right: 15px;
+}
+
+// Product Gallery
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+.product-count {
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+}
+
+// Product Item
+.product-item {
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+// Card Component
+.card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Product Image Container
+.product-image-container {
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Spinner Container
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none;
+}
+
+// Loader Component
+.loader {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--loader-button-bg);
+  border-radius: 5px;
+  box-shadow: 0 0 10px var(--shadow-color);
+  color: #fff;
+}
+
+// Go to Top Button
+.go-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+  }
+}
+
+// Image Container and Responsive Images
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.responsive-img,
+.img-fluid {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+  .responsive-img {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .responsive-img {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-img {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 350px) {
+  .responsive-img {
+    max-width: 60%;
+  }
+}
